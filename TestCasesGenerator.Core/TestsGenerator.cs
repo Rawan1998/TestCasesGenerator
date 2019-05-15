@@ -23,6 +23,12 @@ namespace TestCasesGenerator.Core
             var filler = new TestsFiller();
             testCases = filler.Fill(testCases, syntaxTree.InputVariables.ToArray());
 
+            var runner = new TestRunner(filePath, syntaxTree.InputVariables.ToArray());
+            foreach(TestCase testCase in testCases)
+            {
+                testCase.ExpectedOutput = runner.Run(testCase);
+            }
+
             return testCases;
         }
 

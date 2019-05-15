@@ -63,6 +63,7 @@
     <Compile Include="Structures\Scope.cs" />
     <Compile Include="Structures\SyntaxTree.cs" />
     <Compile Include="Structures\TestCase.cs" />
+    <Compile Include="TestRunner.cs" />
     <Compile Include="TestsFiller.cs" />
     <Compile Include="TestsGenerator.cs" />
     <Compile Include="Structures\Variable.cs" />
