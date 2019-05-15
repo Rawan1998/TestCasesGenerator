@@ -5,9 +5,9 @@ namespace TestCasesGenerator.Core.Structures
 {
     public class TestCase
     {
-        public String Name;
-        public Dictionary<String, object> Inputs;
-        public object ExpectedOutput;
+        public String Name { get; set; }
+        public Dictionary<String, object> Inputs { get; set; }
+        public object ExpectedOutput { get; set; }
 
         public TestCase(String name = "")
         {

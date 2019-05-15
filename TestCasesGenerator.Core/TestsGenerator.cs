@@ -7,7 +7,26 @@ namespace TestCasesGenerator.Core
 {
     public class TestsGenerator
     {
-        public TestCase[] GenerateTests(SyntaxTree syntaxTree)
+        public TestCase[] GenerateTests(string filePath)
+        {
+            var reader = new FileReader();
+            String[] lines = reader.ReadFile(filePath);
+            var parser = new FileParser();
+            SyntaxTree syntaxTree = parser.Parse(lines);
+
+            var generator = new TestsGenerator();
+            TestCase[] testCases = generator.GenerateTests(syntaxTree);
+
+            var matcher = new TestsMatcher();
+            testCases = matcher.Match(testCases);
+
+            var filler = new TestsFiller();
+            testCases = filler.Fill(testCases, syntaxTree.InputVariables.ToArray());
+
+            return testCases;
+        }
+
+        private TestCase[] GenerateTests(SyntaxTree syntaxTree)
         {
             List<TestCase> testCases = new List<TestCase>();
 

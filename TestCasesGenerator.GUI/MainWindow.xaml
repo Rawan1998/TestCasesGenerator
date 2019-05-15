@@ -1,0 +1,48 @@
+﻿<Controls:MetroWindow x:Class="TestCasesGenerator.GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestCasesGenerator.GUI"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Test Cases Generator" Height="600" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="4*" />
+        </Grid.RowDefinitions>
+
+        <Image 
+            Margin="10" 
+            Source="./assets/uploader.png" 
+            Grid.Row="0" 
+            Grid.ColumnSpan="3" 
+            Drop="FileUploadDrop"
+            AllowDrop="True"
+            MouseDown="FileUploadClick"
+        />
+
+        <Button 
+            Grid.Row="0" 
+            Grid.Column="3" 
+            Height="40" 
+            Width="130"
+            Click="CustomTest"
+        >Custom Test</Button>
+
+        <DataGrid
+            Grid.Row="1"
+            Grid.ColumnSpan="4"
+            ItemsSource="{Binding TestCasesTable}"
+        />
+
+    </Grid>
+</Controls:MetroWindow>
