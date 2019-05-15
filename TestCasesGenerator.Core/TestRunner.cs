@@ -4,6 +4,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks;
 using TestCasesGenerator.Core.Structures;
 
 namespace TestCasesGenerator.Core
@@ -72,7 +73,12 @@ namespace TestCasesGenerator.Core
             }
 
             MethodInfo mi = this._compiledObject.GetType().GetMethod("TestMethod");
-            return mi.Invoke(this._compiledObject, sanitizedParams.ToArray());
+
+            var task = Task.Run(() => mi.Invoke(this._compiledObject, sanitizedParams.ToArray()));
+            if (task.Wait(TimeSpan.FromSeconds(0.1)))
+                return task.Result;
+            else
+                return "TIMEOUT";
         }
 
         private void InitCompiler(string source)

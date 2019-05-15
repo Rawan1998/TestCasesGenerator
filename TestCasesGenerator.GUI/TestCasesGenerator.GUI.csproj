@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TestCasesGenerator.Console\TestCasesGenerator.Console.csproj">
+      <Project>{6def4604-8875-4e3b-b51d-8b1d1cca477f}</Project>
+      <Name>TestCasesGenerator.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TestCasesGenerator.Core\TestCasesGenerator.Core.csproj">
       <Project>{3fcf652b-1268-49ee-b67b-d6d8423e490b}</Project>
       <Name>TestCasesGenerator.Core</Name>

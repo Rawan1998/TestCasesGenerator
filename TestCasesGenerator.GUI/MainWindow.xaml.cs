@@ -1,7 +1,9 @@
 ﻿using MahApps.Metro.Controls;
 using Microsoft.Win32;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using TestCasesGenerator.Console;
 
 namespace TestCasesGenerator.GUI
 {
@@ -10,8 +12,11 @@ namespace TestCasesGenerator.GUI
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        private string _filePath;
+
         public MainWindow()
         {
+            this._filePath = null;
             this.DataContext = new MainWindowViewModel();
             InitializeComponent();
         }
@@ -21,6 +26,7 @@ namespace TestCasesGenerator.GUI
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string filePath = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+                this._filePath = filePath;
                 (this.DataContext as MainWindowViewModel).GenerateTests(filePath);
             }
         }
@@ -31,13 +37,20 @@ namespace TestCasesGenerator.GUI
             if (openFileDialog.ShowDialog() == true)
             {
                 string filePath = openFileDialog.FileName;
+                this._filePath = filePath;
                 (this.DataContext as MainWindowViewModel).GenerateTests(filePath);
             }
         }
 
-        private void CustomTest(object sender, RoutedEventArgs e)
+        private async void CustomTest(object sender, RoutedEventArgs e)
         {
+            if (this._filePath == null)
+            {
+                return;
+            }
 
+            var runner = CustomTestRunner.Instance;
+            await Task.Run(() => runner.RunCustomTest(this._filePath));
         }
     }
 }
