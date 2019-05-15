@@ -43,9 +43,18 @@
     <Compile Include="FileParser.cs" />
     <Compile Include="FileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strategies\DivisionTestStrategy.cs" />
+    <Compile Include="Strategies\EqualityTestStrategy.cs" />
+    <Compile Include="Strategies\EqualTestStrategy.cs" />
+    <Compile Include="Strategies\GreaterOrEqualTestStrategy.cs" />
     <Compile Include="Strategies\GreaterTestStrategy.cs" />
+    <Compile Include="Strategies\LessOrEqualTestStrategy.cs" />
+    <Compile Include="Strategies\LessTestStrategy.cs" />
+    <Compile Include="Strategies\MultiplyTestStrategy.cs" />
     <Compile Include="Strategies\OperatorStrategy.cs" />
     <Compile Include="Strategies\OperatorStrategyFactory.cs" />
+    <Compile Include="Strategies\PlusTestStrategy.cs" />
+    <Compile Include="Strategies\SubtractTestStrategy.cs" />
     <Compile Include="Structures\ConditionalScope.cs" />
     <Compile Include="Structures\Function.cs" />
     <Compile Include="Structures\Node.cs" />
@@ -54,8 +63,10 @@
     <Compile Include="Structures\Scope.cs" />
     <Compile Include="Structures\SyntaxTree.cs" />
     <Compile Include="Structures\TestCase.cs" />
+    <Compile Include="TestsFiller.cs" />
     <Compile Include="TestsGenerator.cs" />
     <Compile Include="Structures\Variable.cs" />
+    <Compile Include="TestsMatcher.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -17,6 +17,10 @@ namespace TestCasesGenerator.Core
                 {
                     testCases.AddRange(this.GenerateOperatorTest(conditionalScope.Operator));
                 }
+                else if (child is Operator op)
+                {
+                    testCases.AddRange(this.GenerateOperatorTest(op));
+                }
             }
 
             return testCases.ToArray();
