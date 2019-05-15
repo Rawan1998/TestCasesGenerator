@@ -22,10 +22,9 @@ namespace TestCasesGenerator.Core.Structures
                 node = this.Root;
             }
 
+            yield return node;
             foreach(Node child in node.Children)
             {
-                yield return node;
-
                 if (child is Scope)
                 {
                     foreach (Node parsedNode in this.GetChildren(child))

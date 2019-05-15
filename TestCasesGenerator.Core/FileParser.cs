@@ -77,6 +77,11 @@ namespace TestCasesGenerator.Core
         private Scope ParseScope(String[] line)
         {
             String keyword = line[0];
+            if (line.Length > 1 && line[1] == "if")
+            {
+                keyword = $"{line[0]} {line[1]}";
+            }
+
             String[] conditionals = { "else if", "if", "while" };
 
             if (conditionals.Contains<String>(keyword))
@@ -99,7 +104,11 @@ namespace TestCasesGenerator.Core
         {
             ConditionalScope scope = new ConditionalScope(keyword);
 
-            Operator op = new Operator(line[2]);
+            Operator op;
+            if (keyword == "else if")
+                op = new Operator(line[3]);
+            else
+                op = new Operator(line[2]);
 
             Scope currentScope = this.scope.Peek() as Scope;
             op.LeftOperand = this.ParseOperand(line[1]);
