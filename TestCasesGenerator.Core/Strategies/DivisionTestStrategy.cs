@@ -4,24 +4,22 @@ using TestCasesGenerator.Core.Structures;
 
 namespace TestCasesGenerator.Core.Strategies
 {
-    public class GreaterTestStrategy : OperatorStrategy
+    public class DivisionTestStrategy : OperatorStrategy
     {
         public override TestCase[] GenerateTests(Variable variable, object constant)
         {
             List<TestCase> testCases = new List<TestCase>();
-           
-            double rValue = Convert.ToDouble((string)constant);
 
             TestCase t1 = new TestCase();
-            t1.Inputs.Add(variable.Name, rValue - 1);
+            t1.Inputs.Add(variable.Name, 1);
             testCases.Add(t1);
 
             TestCase t2 = new TestCase();
-            t2.Inputs.Add(variable.Name, rValue + 1);
+            t2.Inputs.Add(variable.Name, 0);
             testCases.Add(t2);
 
             TestCase t3 = new TestCase();
-            t3.Inputs.Add(variable.Name, rValue);
+            t3.Inputs.Add(variable.Name, constant);
             testCases.Add(t3);
 
             return testCases.ToArray();
@@ -34,22 +32,22 @@ namespace TestCasesGenerator.Core.Strategies
 
         public override TestCase[] GenerateTests(Variable left, Variable right)
         {
-            int rightValue = new Random().Next(0, 1000);
             List<TestCase> testCases = new List<TestCase>();
+            int rValue = new Random().Next(10, 1000);
 
             TestCase t1 = new TestCase();
-            t1.Inputs.Add(left.Name, rightValue - 1);
-            t1.Inputs.Add(right.Name, rightValue);
+            t1.Inputs.Add(left.Name, 1);
+            t1.Inputs.Add(right.Name, rValue);
             testCases.Add(t1);
 
             TestCase t2 = new TestCase();
-            t2.Inputs.Add(left.Name, rightValue + 1);
-            t2.Inputs.Add(right.Name, rightValue);
+            t2.Inputs.Add(left.Name, 0);
+            t2.Inputs.Add(right.Name, rValue);
             testCases.Add(t2);
 
             TestCase t3 = new TestCase();
-            t3.Inputs.Add(left.Name, rightValue);
-            t3.Inputs.Add(right.Name, rightValue);
+            t3.Inputs.Add(left.Name, rValue);
+            t3.Inputs.Add(right.Name, rValue);
             testCases.Add(t3);
 
             return testCases.ToArray();
