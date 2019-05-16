@@ -53,13 +53,13 @@ namespace TestCasesGenerator.Core.Strategies
             testCases.Add(t3);
 
             TestCase t4 = new TestCase();
-            t2.Inputs.Add(left.Name, rValue);
-            t2.Inputs.Add(right.Name, 0);
+            t4.Inputs.Add(left.Name, rValue);
+            t4.Inputs.Add(right.Name, 0);
             testCases.Add(t4);
 
             TestCase t5 = new TestCase();
-            t2.Inputs.Add(left.Name, rValue);
-            t2.Inputs.Add(right.Name, 1);
+            t5.Inputs.Add(left.Name, rValue);
+            t5.Inputs.Add(right.Name, 1);
             testCases.Add(t5);
 
             return testCases.ToArray();
