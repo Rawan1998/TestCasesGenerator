@@ -50,6 +50,16 @@ namespace TestCasesGenerator.Core.Strategies
             t3.Inputs.Add(right.Name, rValue);
             testCases.Add(t3);
 
+            TestCase t4 = new TestCase();
+            t1.Inputs.Add(left.Name, rValue);
+            t1.Inputs.Add(right.Name, 1);
+            testCases.Add(t4);
+
+            TestCase t5 = new TestCase();
+            t2.Inputs.Add(left.Name, rValue);
+            t2.Inputs.Add(right.Name, 0);
+            testCases.Add(t5);
+
             return testCases.ToArray();
         }
     }

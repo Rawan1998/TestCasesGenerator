@@ -18,7 +18,7 @@ namespace TestCasesGenerator.Core.Strategies
 
             TestCase t2 = new TestCase();
             t2.Inputs.Add(variable.Name, 1);
-            testCases.Add(t1);
+            testCases.Add(t2);
 
             TestCase t3 = new TestCase();
             t3.Inputs.Add(variable.Name, new Random().Next(10, 1000));
@@ -45,12 +45,22 @@ namespace TestCasesGenerator.Core.Strategies
             TestCase t2 = new TestCase();
             t2.Inputs.Add(left.Name, 1);
             t2.Inputs.Add(right.Name, rValue);
-            testCases.Add(t1);
+            testCases.Add(t2);
 
             TestCase t3 = new TestCase();
             t3.Inputs.Add(left.Name, new Random().Next(10, 1000));
             t3.Inputs.Add(right.Name, rValue);
             testCases.Add(t3);
+
+            TestCase t4 = new TestCase();
+            t2.Inputs.Add(left.Name, rValue);
+            t2.Inputs.Add(right.Name, 0);
+            testCases.Add(t4);
+
+            TestCase t5 = new TestCase();
+            t2.Inputs.Add(left.Name, rValue);
+            t2.Inputs.Add(right.Name, 1);
+            testCases.Add(t5);
 
             return testCases.ToArray();
         }
