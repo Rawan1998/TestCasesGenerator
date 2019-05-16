@@ -74,7 +74,17 @@ namespace TestCasesGenerator.Core
 
             MethodInfo mi = this._compiledObject.GetType().GetMethod("TestMethod");
 
-            var task = Task.Run(() => mi.Invoke(this._compiledObject, sanitizedParams.ToArray()));
+            var task = Task.Run(() => {
+                try
+                {
+                    return mi.Invoke(this._compiledObject, sanitizedParams.ToArray());
+                }
+                catch (TargetInvocationException tie)
+                {
+                    return tie.InnerException.Message;
+                }
+            });
+
             if (task.Wait(TimeSpan.FromSeconds(0.1)))
                 return task.Result;
             else

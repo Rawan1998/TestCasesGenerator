@@ -32,6 +32,10 @@ namespace TestCasesGenerator.Core.Structures
                         yield return parsedNode;
                     }
                 }
+                else
+                {
+                    yield return child;
+                }
             }
         }
     }
